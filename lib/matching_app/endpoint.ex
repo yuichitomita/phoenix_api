@@ -1,7 +1,7 @@
 defmodule MatchingApp.Endpoint do
   use Phoenix.Endpoint, otp_app: :matching_app
 
-  socket "/room:*", MatchingApp.UserSocket
+  socket "/socket", MatchingApp.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
