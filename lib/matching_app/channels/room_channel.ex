@@ -9,9 +9,9 @@ defmodule MatchingApp.RoomChannel do
     {:error, %{reason: "unauthorized"}}
   end
 
-  def handle_in("new_msg", %{"body" => body}, socket) do
-    broadcast! socket, "new_msg", %{user: msg["user"], body: msg["body"]}
-    {:reply, {:ok, %{msg: msg["body"]}}, assign(socket, :user, msg["user"])
+  def handle_in("new:msg", msg, socket) do
+    broadcast! socket, "new:msg", %{user: msg["user"], body: msg["body"]}
+    {:reply, {:ok, %{msg: msg["body"]}}, assign(socket, :user, msg["user"])}
   end
 
   def handle_out("new_msg", payload, socket) do
