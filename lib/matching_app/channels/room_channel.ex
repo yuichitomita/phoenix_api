@@ -13,9 +13,4 @@ defmodule MatchingApp.RoomChannel do
     broadcast! socket, "new:msg", %{user: msg["user"], body: msg["body"]}
     {:reply, {:ok, %{msg: msg["body"]}}, assign(socket, :user, msg["user"])}
   end
-
-  def handle_out("new_msg", payload, socket) do
-    push socket, "new_msg", payload
-    {:noreply, socket}
-  end
 end
