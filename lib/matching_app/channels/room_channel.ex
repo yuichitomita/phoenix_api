@@ -9,7 +9,7 @@ defmodule MatchingApp.RoomChannel do
     {:ok, socket}
   end
 
-  def join("rooms:" <> _private_subtopic, _message, _socket) do
+  def join("room:" <> _private_subtopic, _message, _socket) do
     {:error, %{reason: "unauthorized"}}
   end
 
