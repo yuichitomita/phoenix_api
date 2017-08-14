@@ -2,7 +2,9 @@ defmodule MatchingApp.RoomChannel do
   use Phoenix.Channel
 
   def join("room:lobby", message, socket) do
-    {:ok, socket}
+    messages = Chat.Message.get
+    |> Enum.map(fn {senderId, body} -> %{senderId: senderId, body: body} end)
+    {:ok, %{messages: messages}, socket}
   end
 
   def join("room:" <> _private_subtopic, _message, _socket) do
